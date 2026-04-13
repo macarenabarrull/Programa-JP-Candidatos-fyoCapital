@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-space: "Space Grotesk", sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f8fafc;
+  color: #0f172a;
+  overflow: hidden;
+}
+
+/* Noise Texture Overlay */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  pointer-events: none;
+}
+
+/* Mesh Gradient Backgrounds */
+.bg-mesh-indigo {
+  background: radial-gradient(at 0% 0%, hsla(225, 100%, 95%, 1) 0, transparent 50%),
+              radial-gradient(at 50% 0%, hsla(225, 100%, 90%, 1) 0, transparent 50%),
+              radial-gradient(at 100% 0%, hsla(225, 100%, 95%, 1) 0, transparent 50%);
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+::-webkit-scrollbar-thumb {
+  background: #e9d5ff; 
+  border-radius: 10px;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  html, body {
+      background-color: #ffffff !important;
+      width: 210mm;
+      height: auto;
+      margin: 0 auto;
+      padding: 0;
+      overflow: visible !important;
+  }
+  body {
+    color: #000000 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .no-print {
+      display: none !important;
+  }
+  main {
+      padding: 0 !important;
+      margin: 0 !important;
+      width: 100% !important;
+      display: block !important;
+      overflow: visible !important;
+  }
+  #root {
+    width: 100%;
+    overflow: visible;
+  }
+  header, footer {
+    display: none !important;
+  }
+}
