@@ -1,8 +1,7 @@
 import React, { ReactNode, useState, useEffect, useRef } from 'react';
 import { 
   ChevronRight, ChevronLeft, Maximize, Minimize, Keyboard, X, MousePointer2, 
-  Sparkles, Home, Target, Users, Info, GraduationCap, CheckCircle2, Compass,
-  BrainCircuit, Layers, Zap, ClipboardCheck, Heart
+  Sparkles, Home, Info, CheckCircle2, User
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SLIDES } from '../constants';
@@ -306,22 +305,8 @@ export const SlideLayout: React.FC<SlideLayoutProps> = ({
                   // Map slide types/ids to icons
                   const getSlideIcon = () => {
                     if (slide.type === 'cover') return Home;
-                    if (slide.type === 'objectives') return Target;
-                    if (slide.type === 'info') return Users;
-                    if (slide.type === 'academy-split') return GraduationCap;
                     if (slide.type === 'closing') return CheckCircle2;
-                    if (slide.type === 'tutor-content') {
-                      // Use the icon from content if it exists in our imports
-                      const iconName = slide.content?.icon;
-                      if (iconName === 'Compass') return Compass;
-                      if (iconName === 'Target') return Target;
-                      if (iconName === 'BrainCircuit') return BrainCircuit;
-                      if (iconName === 'Layers') return Layers;
-                      if (iconName === 'Zap') return Zap;
-                      if (iconName === 'ClipboardCheck') return ClipboardCheck;
-                      if (iconName === 'Heart') return Heart;
-                      if (iconName === 'Sparkles') return Sparkles;
-                    }
+                    if (slide.type === 'candidate') return User;
                     return Info;
                   };
                   const Icon = getSlideIcon();

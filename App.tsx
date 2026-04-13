@@ -3,15 +3,7 @@ import { SLIDES, SlideData } from './constants';
 import { SlideLayout } from './components/SlideLayout';
 import { 
   CoverSlide, 
-  InfoSlide,
-  ObjectivesSlide, 
-  GridSlide, 
-  TableGranosSlide, 
-  TableCapitalSlide,
-  MentoringSplitSlide,
-  AcademySplitSlide,
   ClosingSlide,
-  TutorContentSlide,
   CandidateSlide
 } from './components/Slides';
 import { ReportView } from './components/ReportView';
@@ -67,22 +59,6 @@ const App: React.FC = () => {
       switch (data.type) {
         case 'cover':
           return <CoverSlide data={data} />;
-        case 'objectives':
-          return <ObjectivesSlide data={data} />;
-        case 'info':
-          return <InfoSlide data={data} />;
-        case 'grid':
-          return <GridSlide data={data} />;
-        case 'table-granos':
-          return <TableGranosSlide data={data} />;
-        case 'table-capital':
-          return <TableCapitalSlide data={data} />;
-        case 'mentoring-split':
-          return <MentoringSplitSlide data={data} />;
-        case 'academy-split':
-          return <AcademySplitSlide data={data} />;
-        case 'tutor-content':
-          return <TutorContentSlide data={data} index={currentSlideIndex} />;
         case 'candidate':
           return <CandidateSlide data={data} />;
         case 'closing':
