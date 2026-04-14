@@ -18,34 +18,34 @@ export const ReportView: React.FC<ReportViewProps> = ({ slides }) => {
   }
 
   const Header = ({ sectionTitle = "PERFIL DE CANDIDATO" }) => (
-    <header className="mb-6 border-b border-slate-200 pb-3 flex justify-between items-end">
+    <header className="mb-8 border-b border-slate-200 pb-4 flex justify-between items-end">
         <div>
-            <div className="flex items-center gap-2 mb-1">
-                <div className="h-1 w-8 bg-indigo-600 rounded-full" />
-                <h3 className="text-[8px] text-indigo-600 font-black uppercase tracking-[0.4em]">
+            <div className="flex items-center gap-2 mb-1.5">
+                <div className="h-1 w-10 bg-indigo-600 rounded-full" />
+                <h3 className="text-[10px] text-indigo-600 font-black uppercase tracking-[0.4em]">
                     PROGRAMA JP 25-26 | fyo
                 </h3>
             </div>
-            <h1 className="text-xl font-black text-slate-900 uppercase tracking-tighter">
+            <h1 className="text-2xl font-black text-slate-900 uppercase tracking-tighter">
                 {sectionTitle}
             </h1>
         </div>
         <div className="text-right">
-            <div className="text-2xl font-black text-slate-900 tracking-tighter leading-none">fyo<span className="text-indigo-500">.</span></div>
-            <div className="text-[6px] font-bold text-slate-400 uppercase tracking-widest mt-1">Talento & Cultura</div>
+            <div className="text-3xl font-black text-slate-900 tracking-tighter leading-none">fyo<span className="text-indigo-500">.</span></div>
+            <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest mt-1">Talento & Cultura</div>
         </div>
     </header>
   );
 
   const Footer = ({ page, total }: { page: number, total: number }) => (
-    <footer className="mt-auto pt-6 flex justify-between items-center text-[8px] text-slate-400 border-t border-slate-100">
-        <div className="flex items-center gap-4">
+    <footer className="mt-auto pt-8 flex justify-between items-center text-[10px] text-slate-400 border-t border-slate-100">
+        <div className="flex items-center gap-6">
             <span className="font-black uppercase tracking-[0.2em] text-slate-900">Dossier Ejecutivo de Selección</span>
-            <div className="h-3 w-px bg-slate-200" />
+            <div className="h-4 w-px bg-slate-200" />
             <span className="font-bold">Confidencial - Uso Interno</span>
         </div>
         <div className="flex items-center gap-2">
-            <div className="font-black text-slate-900 bg-slate-100 px-4 py-1.5 rounded-lg">
+            <div className="font-black text-slate-900 bg-slate-100 px-5 py-2 rounded-lg">
                 PÁGINA {page} DE {total}
             </div>
         </div>
@@ -69,7 +69,7 @@ export const ReportView: React.FC<ReportViewProps> = ({ slides }) => {
   let currentPage = 1;
 
   return (
-    <div className="w-full bg-slate-100 text-slate-900 font-sans text-[9px] leading-tight print:p-0 print:bg-white">
+    <div className="w-full bg-slate-100 text-slate-900 font-sans text-[11px] leading-tight print:p-0 print:bg-white">
         
       {/* PAGE 1: PORTADA */}
       <div className="w-[210mm] h-[297mm] mx-auto p-[2.5cm] relative flex flex-col bg-white shadow-2xl mb-12 print:shadow-none print:mb-0 print:break-after-page overflow-hidden">
@@ -94,20 +94,20 @@ export const ReportView: React.FC<ReportViewProps> = ({ slides }) => {
           <div className="mt-auto relative z-10 flex justify-between items-end border-t border-slate-100 pt-12">
               <div className="flex gap-20">
                   <div>
-                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] block mb-4">Documento</span>
-                      <span className="text-xl font-black text-slate-900 uppercase tracking-tight">Reporte Ejecutivo</span>
+                      <span className="text-[12px] font-black text-slate-400 uppercase tracking-[0.4em] block mb-4">Documento</span>
+                      <span className="text-2xl font-black text-slate-900 uppercase tracking-tight">Reporte Ejecutivo</span>
                   </div>
                   <div>
-                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] block mb-4">Fecha</span>
-                      <span className="text-xl font-black text-slate-900 uppercase tracking-tight">Abril 2026</span>
+                      <span className="text-[12px] font-black text-slate-400 uppercase tracking-[0.4em] block mb-4">Fecha</span>
+                      <span className="text-2xl font-black text-slate-900 uppercase tracking-tight">Abril 2026</span>
                   </div>
               </div>
               <div className="text-right">
                   <div className="flex items-center gap-3 justify-end mb-3">
                       <div className="h-1 w-6 bg-indigo-600 rounded-full" />
-                      <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.4em]">Propiedad de</span>
+                      <span className="text-[12px] font-black text-indigo-600 uppercase tracking-[0.4em]">Propiedad de</span>
                   </div>
-                  <span className="text-lg font-black text-slate-900">Talento & Cultura fyo</span>
+                  <span className="text-xl font-black text-slate-900">Talento & Cultura fyo</span>
               </div>
           </div>
       </div>
@@ -116,10 +116,10 @@ export const ReportView: React.FC<ReportViewProps> = ({ slides }) => {
       <div className="w-[210mm] h-[297mm] mx-auto p-[2cm] relative flex flex-col bg-white shadow-2xl mb-12 print:shadow-none print:mb-0 print:break-after-page">
           <Header sectionTitle="ÍNDICE DE CANDIDATOS" />
           <div className="flex-1 py-10">
-              <div className="grid grid-cols-2 gap-12">
-                  <div className="space-y-6">
-                      <h4 className="text-xs font-black text-indigo-600 uppercase tracking-widest border-b border-indigo-100 pb-2">Nómina de Perfiles</h4>
-                      <div className="space-y-3">
+              <div className="grid grid-cols-2 gap-16">
+                  <div className="space-y-8">
+                      <h4 className="text-sm font-black text-indigo-600 uppercase tracking-widest border-b border-indigo-100 pb-3">Nómina de Perfiles</h4>
+                      <div className="space-y-4">
                           {candidateSlides.map((s, i) => {
                               // Calculate page number based on groups [2, 2, 2, 2, 2, 3]
                               let pageNum = 3;
@@ -132,37 +132,37 @@ export const ReportView: React.FC<ReportViewProps> = ({ slides }) => {
                                   }
                               }
                               return (
-                                  <div key={i} className="flex justify-between items-center border-b border-slate-50 pb-1">
-                                      <div className="flex items-center gap-2">
-                                          <span className="font-bold text-slate-700 text-[10px]">{s.content.name}</span>
-                                          <span className="text-[7px] font-black text-slate-400 uppercase tracking-wider">({s.content.age} años)</span>
+                                  <div key={i} className="flex justify-between items-center border-b border-slate-50 pb-2">
+                                      <div className="flex items-center gap-3">
+                                          <span className="font-bold text-slate-700 text-[12px]">{s.content.name}</span>
+                                          <span className="text-[9px] font-black text-slate-400 uppercase tracking-wider">({s.content.age} años)</span>
                                       </div>
-                                      <span className="font-black text-slate-300">Pág. {pageNum}</span>
+                                      <span className="font-black text-slate-300 text-[11px]">Pág. {pageNum}</span>
                                   </div>
                               );
                           })}
                       </div>
                   </div>
-                  <div className="space-y-8">
-                      <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100">
-                          <h4 className="text-xs font-black text-slate-900 uppercase tracking-widest mb-4">Objetivo del Dossier</h4>
-                          <p className="text-sm font-medium text-slate-600 leading-relaxed">
+                  <div className="space-y-10">
+                      <div className="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100">
+                          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest mb-5">Objetivo del Dossier</h4>
+                          <p className="text-[13px] font-medium text-slate-600 leading-relaxed">
                               Este dossier ejecutivo ha sido estructurado para el Programa de Formación Comercial en Granos 25-26. 
                               Proporciona una visión objetiva de cada perfil, permitiendo a los líderes comerciales evaluar el potencial 
                               de cada candidato para integrarse a la mesa de negocios de fyo.
                           </p>
                       </div>
-                      <div className="p-8 border-2 border-dashed border-indigo-100 rounded-3xl">
-                          <h4 className="text-xs font-black text-indigo-600 uppercase tracking-widest mb-4">Criterios de Evaluación</h4>
-                          <ul className="space-y-3">
+                      <div className="p-10 border-2 border-dashed border-indigo-100 rounded-[2.5rem]">
+                          <h4 className="text-sm font-black text-indigo-600 uppercase tracking-widest mb-5">Criterios de Evaluación</h4>
+                          <ul className="space-y-4">
                               {[
                                 'Perfil Comercial y Negociación', 
                                 'Capacidad Analítica y de Procesos', 
                                 'Ajuste Cultural fyo', 
                                 'Potencial de Aprendizaje y Desarrollo'
                               ].map((c, i) => (
-                                  <li key={i} className="flex items-center gap-3 text-xs font-bold text-slate-700">
-                                      <div className="w-2 h-2 bg-indigo-500 rounded-full" />
+                                  <li key={i} className="flex items-center gap-4 text-[13px] font-bold text-slate-700">
+                                      <div className="w-2.5 h-2.5 bg-indigo-500 rounded-full" />
                                       {c}
                                   </li>
                               ))}
@@ -196,27 +196,27 @@ export const ReportView: React.FC<ReportViewProps> = ({ slides }) => {
                                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
                                   </div>
                                   <div className="flex flex-col justify-center min-w-0">
-                                      <h2 className={`${isThreeCol ? 'text-base' : 'text-xl'} font-black text-slate-900 leading-tight mb-1 tracking-tighter uppercase`}>{candidate.name}</h2>
+                                      <h2 className={`${isThreeCol ? 'text-lg' : 'text-2xl'} font-black text-slate-900 leading-tight mb-1 tracking-tighter uppercase`}>{candidate.name}</h2>
                                       <div className={`flex items-center gap-2 mb-1 ${isThreeCol ? 'justify-center' : ''}`}>
-                                          <div className="px-2 py-0.5 bg-indigo-600 text-white text-[7px] font-black rounded-lg uppercase tracking-widest shadow-md shadow-indigo-100">
+                                          <div className="px-2 py-0.5 bg-indigo-600 text-white text-[9px] font-black rounded-lg uppercase tracking-widest shadow-md shadow-indigo-100">
                                               {candidate.age} AÑOS
                                           </div>
                                       </div>
-                                      <p className="text-[8px] font-bold text-slate-500 leading-tight line-clamp-2">{candidate.study}</p>
+                                      <p className="text-[10px] font-bold text-slate-500 leading-tight line-clamp-2">{candidate.study}</p>
                                   </div>
                               </div>
 
                               {/* Experience & Skills */}
-                              <div className="space-y-3 mb-4">
+                              <div className="space-y-4 mb-4">
                                   <section>
-                                      <div className="flex items-center justify-between mb-1.5 border-b border-slate-100 pb-1">
-                                          <h3 className="text-[7px] font-black text-indigo-600 uppercase tracking-widest flex items-center gap-1.5">
-                                              <Briefcase size={8} /> Trayectoria
+                                      <div className="flex items-center justify-between mb-2 border-b border-slate-100 pb-1">
+                                          <h3 className="text-[9px] font-black text-indigo-600 uppercase tracking-widest flex items-center gap-1.5">
+                                              <Briefcase size={10} /> Trayectoria
                                           </h3>
                                       </div>
-                                      <div className="space-y-1">
+                                      <div className="space-y-1.5">
                                           {candidate.experience.map((exp: string, i: number) => (
-                                              <div key={i} className="text-[7px] font-medium text-slate-600 leading-tight flex gap-1.5">
+                                              <div key={i} className="text-[9px] font-medium text-slate-600 leading-tight flex gap-1.5">
                                                   <div className="mt-1 h-1 w-1 rounded-full bg-indigo-400 shrink-0" />
                                                   <span>{exp}</span>
                                               </div>
@@ -226,14 +226,14 @@ export const ReportView: React.FC<ReportViewProps> = ({ slides }) => {
 
                                   {candidate.courses && candidate.courses.length > 0 && (
                                       <section>
-                                          <div className="flex items-center justify-between mb-1.5 border-b border-slate-100 pb-1">
-                                              <h3 className="text-[7px] font-black text-indigo-600 uppercase tracking-widest flex items-center gap-1.5">
-                                                  <GraduationCap size={8} /> Formación
+                                          <div className="flex items-center justify-between mb-2 border-b border-slate-100 pb-1">
+                                              <h3 className="text-[9px] font-black text-indigo-600 uppercase tracking-widest flex items-center gap-1.5">
+                                                  <GraduationCap size={10} /> Formación
                                               </h3>
                                           </div>
-                                          <div className="flex flex-wrap gap-1">
+                                          <div className="flex flex-wrap gap-1.5">
                                               {candidate.courses.map((course: string, i: number) => (
-                                                  <span key={i} className="px-1.5 py-0.5 bg-slate-50 text-slate-500 text-[6px] font-bold rounded border border-slate-100">
+                                                  <span key={i} className="px-2 py-0.5 bg-slate-50 text-slate-500 text-[8px] font-bold rounded border border-slate-100">
                                                       {course}
                                                   </span>
                                               ))}
@@ -241,18 +241,18 @@ export const ReportView: React.FC<ReportViewProps> = ({ slides }) => {
                                       </section>
                                   )}
                                   
-                                  <div className="grid grid-cols-1 gap-1.5">
-                                      <div className="p-2 bg-indigo-50/50 rounded-xl border border-indigo-100/50">
-                                          <span className="text-[6px] font-black text-indigo-600 uppercase tracking-widest block mb-0.5 flex items-center gap-1.5">
-                                              <UserCheck size={7} /> Fortalezas
+                                  <div className="grid grid-cols-1 gap-2">
+                                      <div className="p-3 bg-indigo-50/50 rounded-xl border border-indigo-100/50">
+                                          <span className="text-[8px] font-black text-indigo-600 uppercase tracking-widest block mb-1 flex items-center gap-1.5">
+                                              <UserCheck size={9} /> Fortalezas
                                           </span>
-                                          <p className="text-[7px] font-bold text-indigo-900 leading-relaxed">{candidate.notable}</p>
+                                          <p className="text-[9px] font-bold text-indigo-900 leading-relaxed">{candidate.notable}</p>
                                       </div>
-                                      <div className="p-2 bg-rose-50/50 rounded-xl border border-rose-100/50">
-                                          <span className="text-[6px] font-black text-rose-600 uppercase tracking-widest block mb-0.5 flex items-center gap-1.5">
-                                              <TrendingUp size={7} /> Desarrollo
+                                      <div className="p-3 bg-rose-50/50 rounded-xl border border-rose-100/50">
+                                          <span className="text-[8px] font-black text-rose-600 uppercase tracking-widest block mb-1 flex items-center gap-1.5">
+                                              <TrendingUp size={9} /> Desarrollo
                                           </span>
-                                          <p className="text-[7px] font-bold text-rose-900 leading-relaxed">{candidate.toConsider}</p>
+                                          <p className="text-[9px] font-bold text-rose-900 leading-relaxed">{candidate.toConsider}</p>
                                       </div>
                                   </div>
                               </div>
@@ -287,41 +287,41 @@ export const ReportView: React.FC<ReportViewProps> = ({ slides }) => {
           
           <div className="flex-1 space-y-8">
               {/* Cierre Block */}
-              <div className="flex items-center gap-8 bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100">
-                  <div className="w-20 h-20 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-4xl shadow-lg shrink-0">🚀</div>
+              <div className="flex items-center gap-10 bg-slate-50 p-10 rounded-[3rem] border border-slate-100">
+                  <div className="w-24 h-24 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-5xl shadow-lg shrink-0">🚀</div>
                   <div>
-                      <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-2">{closing.title}</h2>
-                      <p className="text-sm text-indigo-600 font-black uppercase tracking-widest mb-4">{closing.subtitle}</p>
-                      <p className="text-base font-bold text-slate-600 italic leading-tight">"{closing.content.description}"</p>
+                      <h2 className="text-4xl font-black text-slate-900 uppercase tracking-tighter mb-3">{closing.title}</h2>
+                      <p className="text-lg text-indigo-600 font-black uppercase tracking-widest mb-5">{closing.subtitle}</p>
+                      <p className="text-xl font-bold text-slate-600 italic leading-tight">"{closing.content.description}"</p>
                   </div>
               </div>
 
               {/* Notas Block */}
               <section className="flex-1">
-                  <div className="flex items-center gap-3 mb-4">
-                      <TrendingUp size={16} className="text-slate-900" />
-                      <h4 className="text-xs font-black text-slate-900 uppercase tracking-widest">Observaciones Consolidadas y Ranking de Selección</h4>
+                  <div className="flex items-center gap-4 mb-5">
+                      <TrendingUp size={20} className="text-slate-900" />
+                      <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Observaciones Consolidadas y Ranking de Selección</h4>
                   </div>
-                  <div className="h-[550px] w-full bg-slate-50/30 border-2 border-dashed border-slate-200 rounded-[2rem] p-8 relative overflow-hidden">
-                      <div className="space-y-8">
-                          {[1,2,3,4,5,6,7,8,9,10,11,12].map(i => (
+                  <div className="h-[500px] w-full bg-slate-50/30 border-2 border-dashed border-slate-200 rounded-[2.5rem] p-10 relative overflow-hidden">
+                      <div className="space-y-10">
+                          {[1,2,3,4,5,6,7,8,9,10,11].map(i => (
                               <div key={i} className="border-b border-slate-200/60 h-px w-full" />
                           ))}
                       </div>
-                      <div className="absolute bottom-6 right-10 text-[8px] font-black text-slate-300 uppercase tracking-[0.3em]">Espacio para síntesis final de la mesa directiva</div>
+                      <div className="absolute bottom-8 right-12 text-[10px] font-black text-slate-300 uppercase tracking-[0.3em]">Espacio para síntesis final de la mesa directiva</div>
                   </div>
               </section>
 
               {/* Contacto Block */}
-              <div className="pt-4 border-t border-slate-100 flex justify-center gap-12">
+              <div className="pt-6 border-t border-slate-100 flex justify-center gap-16">
                   {closing.content.contacts.map((c: any, i: number) => (
-                      <div key={i} className="flex items-center gap-3">
-                          <div className="bg-indigo-600 p-2 rounded-xl text-white">
-                              <Mail size={14} />
+                      <div key={i} className="flex items-center gap-4">
+                          <div className="bg-indigo-600 p-3 rounded-xl text-white">
+                              <Mail size={18} />
                           </div>
                           <div className="text-left">
-                              <span className="text-[7px] font-black text-indigo-600 uppercase block">{c.role}</span>
-                              <span className="text-[10px] font-black text-slate-900">{c.email}</span>
+                              <span className="text-[9px] font-black text-indigo-600 uppercase block mb-0.5">{c.role}</span>
+                              <span className="text-[13px] font-black text-slate-900">{c.email}</span>
                           </div>
                       </div>
                   ))}

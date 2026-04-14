@@ -276,16 +276,19 @@ export const ClosingSlide: React.FC<SlideProps> = ({ data, onPrint, onJumpToSlid
                 </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="w-full max-w-xl mb-6">
-                <GlassCard className="p-4 text-center border-indigo-100/50 bg-white/40 backdrop-blur-xl shadow-xl relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-indigo-600" />
-                    <p className="text-sm md:text-base font-bold text-slate-700 leading-relaxed tracking-tight mb-3 italic">
+            <motion.div variants={itemVariants} className="w-full max-w-2xl mb-8">
+                <GlassCard className="p-8 text-center border-white/60 bg-white/60 backdrop-blur-2xl shadow-2xl relative overflow-hidden group">
+                    <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-indigo-600 via-emerald-500 to-indigo-600" />
+                    <div className="absolute -right-10 -bottom-10 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <Sparkles size={160} />
+                    </div>
+                    <p className="text-lg md:text-xl lg:text-2xl font-bold text-slate-800 leading-relaxed tracking-tight mb-4 italic font-display">
                         "{description}"
                     </p>
-                    <div className="flex items-center justify-center gap-1.5">
-                        <div className="h-1 w-1 rounded-full bg-indigo-400" />
-                        <div className="h-1 w-1 rounded-full bg-indigo-400" />
-                        <div className="h-1 w-1 rounded-full bg-indigo-400" />
+                    <div className="flex items-center justify-center gap-2">
+                        <div className="h-1.5 w-1.5 rounded-full bg-indigo-500 animate-bounce [animation-delay:-0.3s]" />
+                        <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-bounce [animation-delay:-0.15s]" />
+                        <div className="h-1.5 w-1.5 rounded-full bg-indigo-500 animate-bounce" />
                     </div>
                 </GlassCard>
             </motion.div>
