@@ -227,9 +227,9 @@ export const SLIDES: SlideData[] = [
     id: 'closing',
     type: 'closing',
     title: 'MUCHAS GRACIAS',
-    subtitle: 'Programa JP 25-26 | Candidatos fyoCap',
+    subtitle: 'Programa JP 25-26',
     content: {
-      description: 'En fyoCapital, impulsamos el crecimiento del mercado financiero aplicado al agro. Nuestra cultura se basa en la excelencia, la transparencia y la innovación constante.',
+      description: 'En fyo, creemos en el poder de las personas para transformar el agro. La cultura de fyo se basa en la confianza, la colaboracion y la innovación.',
       contacts: [
         { role: 'TBP', email: 'mbarrull@fyo.com' },
         { role: 'Talento', email: 'talentos@fyo.com' }
