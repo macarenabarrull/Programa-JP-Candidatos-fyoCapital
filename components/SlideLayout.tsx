@@ -149,19 +149,16 @@ export const SlideLayout: React.FC<SlideLayoutProps> = ({
     enter: (direction: number) => ({
       x: direction > 0 ? 100 : -100,
       opacity: 0,
-      filter: 'blur(8px)',
     }),
     center: {
       zIndex: 1,
       x: 0,
       opacity: 1,
-      filter: 'blur(0px)',
     },
     exit: (direction: number) => ({
       zIndex: 0,
       x: direction < 0 ? 100 : -100,
       opacity: 0,
-      filter: 'blur(8px)',
     }),
   };
 
@@ -172,22 +169,11 @@ export const SlideLayout: React.FC<SlideLayoutProps> = ({
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
     >
-      {/* --- AURORA BACKGROUND --- */}
-      <div className="absolute inset-0 w-full h-full bg-[#f8fafc] overflow-hidden -z-10 print:hidden bg-mesh-indigo">
-          {/* Noise Texture Overlay */}
-          <div className="absolute inset-0 bg-noise z-10"></div>
-          
-          {/* Animated Blobs */}
-          <div className="absolute top-0 -left-4 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-          <div className="absolute top-0 -right-4 w-96 h-96 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-20 w-96 h-96 bg-rose-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animation-delay-4000"></div>
-          
-          {/* Large Static Gradients for depth */}
-          <div className="absolute top-[-10%] right-[-10%] w-[80vw] h-[80vw] bg-gradient-to-b from-indigo-100/30 to-transparent rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-gradient-to-t from-emerald-100/30 to-transparent rounded-full blur-[100px] pointer-events-none" />
-          
-          {/* Grain Texture */}
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay"></div>
+      {/* --- BACKGROUND --- */}
+      <div className="absolute inset-0 w-full h-full bg-[#f8fafc] overflow-hidden -z-10 print:hidden">
+          {/* Static Gradients for depth */}
+          <div className="absolute top-[-10%] right-[-10%] w-[80vw] h-[80vw] bg-gradient-to-b from-indigo-100/20 to-transparent rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-gradient-to-t from-emerald-100/20 to-transparent rounded-full blur-[80px] pointer-events-none" />
       </div>
 
       {/* Top Progress Bar - Glowing */}

@@ -24,10 +24,10 @@ export const SLIDES: SlideData[] = [
   {
     id: 'cover',
     type: 'cover',
-    title: 'Candidatos fyoCap | JP 25-26',
+    title: 'Candidatos | JP 25-26',
     subtitle: 'Informe de candidatos para Assessment Center',
     content: {
-      highlight: 'Estrategia de Crecimiento fyoCapital',
+      highlight: 'Estrategia de Crecimiento',
       tags: ['Mercado de Capitales', 'Talento joven', 'Proceso de selección']
     }
   },

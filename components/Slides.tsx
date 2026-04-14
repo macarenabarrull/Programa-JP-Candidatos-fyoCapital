@@ -42,12 +42,11 @@ const GlowIcon: React.FC<{ icon: any, color: string, bg: string, size?: number }
 // --- Reusable "Deep Glass" Card Component ---
 const GlassCard: React.FC<{ children?: React.ReactNode, className?: string, hover?: boolean }> = ({ children, className = "", hover = false }) => (
     <div className={`
-        bg-white/40 backdrop-blur-2xl backdrop-saturate-150 
-        border border-white/60 rounded-2xl md:rounded-3xl
-        shadow-[0_8px_32px_0_rgba(99,102,241,0.03)]
+        bg-white/60 backdrop-blur-lg
+        border border-white/40 rounded-2xl md:rounded-3xl
+        shadow-sm
         relative overflow-hidden
-        before:absolute before:inset-0 before:rounded-[inherit] before:p-[1px] before:bg-gradient-to-br before:from-white/80 before:to-transparent before:-z-10
-        ${hover ? 'transition-all duration-500 hover:bg-white/60 hover:scale-[1.01] hover:shadow-[0_20px_50px_-12px_rgba(99,102,241,0.15)] hover:border-white/80' : ''}
+        ${hover ? 'transition-all duration-300 hover:bg-white/80 hover:shadow-md' : ''}
         ${className}
     `}>
         {children}
@@ -83,10 +82,6 @@ export const CoverSlide: React.FC<SlideProps> = ({ data }) => {
         initial="hidden" animate="show" variants={containerVariants}
     >
       <motion.div variants={itemVariants} className="w-full max-w-5xl relative">
-        {/* Decorative Elements */}
-        <div className="absolute -top-20 -left-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-700" />
-        
         <GlassCard className="p-4 md:p-8 flex flex-col items-center border-white/80 shadow-2xl relative overflow-visible">
             {/* Top Accent Bar */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-indigo-600 to-emerald-500 rounded-b-full shadow-lg shadow-indigo-200" />
@@ -95,7 +90,6 @@ export const CoverSlide: React.FC<SlideProps> = ({ data }) => {
                 variants={itemVariants} 
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-xl border border-indigo-100 bg-indigo-50/50 text-indigo-700 text-[10px] font-black tracking-[0.3em] uppercase mb-4 shadow-sm backdrop-blur-md"
             >
-                <Sparkles size={12} className="animate-pulse" />
                 FYO | PROGRAMA JP
             </motion.div>
             
