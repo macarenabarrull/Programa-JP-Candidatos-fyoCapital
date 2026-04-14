@@ -52,17 +52,12 @@ export const ReportView: React.FC<ReportViewProps> = ({ slides }) => {
     </footer>
   );
 
-  // Group candidates: 2 per page, but last page can take 3 if needed to save space
+  // Group candidates: strictly 2 per page to ensure readability and space for annotations
   const candidateGroups: SlideData[][] = [];
   const candidates = [...candidateSlides];
   
   while (candidates.length > 0) {
-    // If we have 3 left, put them all on one page to save a page
-    if (candidates.length === 3) {
-      candidateGroups.push(candidates.splice(0, 3));
-    } else {
-      candidateGroups.push(candidates.splice(0, 2));
-    }
+    candidateGroups.push(candidates.splice(0, 2));
   }
 
   const totalPages = 1 + 1 + candidateGroups.length + 1;
@@ -176,18 +171,17 @@ export const ReportView: React.FC<ReportViewProps> = ({ slides }) => {
 
       {/* CANDIDATE PAGES */}
       {candidateGroups.map((group, groupIdx) => (
-          <div key={groupIdx} className="w-[210mm] h-[297mm] mx-auto p-[1.2cm] relative flex flex-col bg-white shadow-2xl mb-12 print:shadow-none print:mb-0 print:break-after-page">
+          <div key={groupIdx} className="w-[210mm] h-[297mm] mx-auto p-[1.5cm] relative flex flex-col bg-white shadow-2xl mb-12 print:shadow-none print:mb-0 print:break-after-page overflow-hidden">
               <Header sectionTitle={`EVALUACIÓN DE PERFILES: GRUPO ${groupIdx + 1}`} />
               
-              <div className={`flex-1 grid ${group.length === 3 ? 'grid-cols-3 gap-4' : 'grid-cols-2 gap-10'} py-2`}>
+              <div className="flex-1 grid grid-cols-2 gap-12 py-2">
                   {group.map((slide, idx) => {
                       const candidate = slide.content;
-                      const isThreeCol = group.length === 3;
                       return (
-                          <div key={idx} className={`flex flex-col ${idx < group.length - 1 ? 'border-r border-slate-100' : ''} ${isThreeCol ? 'pr-3 pl-3 first:pl-0 last:pr-0' : 'pr-5 last:pr-0 last:pl-5'}`}>
+                          <div key={idx} className={`flex flex-col ${idx === 0 && group.length > 1 ? 'border-r border-slate-100 pr-6' : 'pl-6'} h-full`}>
                               {/* Candidate Header */}
-                              <div className={`flex ${isThreeCol ? 'flex-col items-center text-center' : 'gap-5'} mb-6`}>
-                                  <div className={`${isThreeCol ? 'w-24 h-32 mb-3' : 'w-28 h-36'} rounded-2xl overflow-hidden border border-slate-200 shrink-0 shadow-lg relative`}>
+                              <div className="flex gap-6 mb-8">
+                                  <div className="w-32 h-40 rounded-2xl overflow-hidden border border-slate-200 shrink-0 shadow-lg relative">
                                       {candidate.image ? (
                                           <img src={candidate.image} alt={candidate.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                                       ) : (
@@ -196,28 +190,28 @@ export const ReportView: React.FC<ReportViewProps> = ({ slides }) => {
                                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
                                   </div>
                                   <div className="flex flex-col justify-center min-w-0">
-                                      <h2 className={`${isThreeCol ? 'text-2xl' : 'text-4xl'} font-black text-slate-900 leading-tight mb-1 tracking-tighter uppercase`}>{candidate.name}</h2>
-                                      <div className={`flex items-center gap-2 mb-2 ${isThreeCol ? 'justify-center' : ''}`}>
-                                          <div className="px-3 py-1 bg-indigo-600 text-white text-[12px] font-black rounded-lg uppercase tracking-widest shadow-md shadow-indigo-100">
+                                      <h2 className="text-4xl font-black text-slate-900 leading-tight mb-2 tracking-tighter uppercase">{candidate.name}</h2>
+                                      <div className="flex items-center gap-2 mb-3">
+                                          <div className="px-3 py-1 bg-indigo-600 text-white text-[13px] font-black rounded-lg uppercase tracking-widest shadow-md shadow-indigo-100">
                                               {candidate.age} AÑOS
                                           </div>
                                       </div>
-                                      <p className="text-[14px] font-bold text-slate-500 leading-tight line-clamp-2">{candidate.study}</p>
+                                      <p className="text-[15px] font-bold text-slate-500 leading-tight line-clamp-2">{candidate.study}</p>
                                   </div>
                               </div>
 
                               {/* Experience & Skills */}
-                              <div className="space-y-6 mb-6">
+                              <div className="space-y-8 mb-8">
                                   <section>
-                                      <div className="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">
-                                          <h3 className="text-[13px] font-black text-indigo-600 uppercase tracking-widest flex items-center gap-2">
-                                              <Briefcase size={14} /> Trayectoria
+                                      <div className="flex items-center justify-between mb-4 border-b border-slate-100 pb-2">
+                                          <h3 className="text-[14px] font-black text-indigo-600 uppercase tracking-widest flex items-center gap-2">
+                                              <Briefcase size={16} /> Trayectoria
                                           </h3>
                                       </div>
-                                      <div className="space-y-2.5">
+                                      <div className="space-y-3">
                                           {candidate.experience.map((exp: string, i: number) => (
-                                              <div key={i} className="text-[13px] font-medium text-slate-600 leading-tight flex gap-2.5">
-                                                  <div className="mt-1.5 h-2 w-2 rounded-full bg-indigo-400 shrink-0" />
+                                              <div key={i} className="text-[14px] font-medium text-slate-600 leading-tight flex gap-3">
+                                                  <div className="mt-2 h-2 w-2 rounded-full bg-indigo-400 shrink-0" />
                                                   <span>{exp}</span>
                                               </div>
                                           ))}
@@ -226,14 +220,14 @@ export const ReportView: React.FC<ReportViewProps> = ({ slides }) => {
 
                                   {candidate.courses && candidate.courses.length > 0 && (
                                       <section>
-                                          <div className="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">
-                                              <h3 className="text-[13px] font-black text-indigo-600 uppercase tracking-widest flex items-center gap-2">
-                                                  <GraduationCap size={14} /> Formación
+                                          <div className="flex items-center justify-between mb-4 border-b border-slate-100 pb-2">
+                                              <h3 className="text-[14px] font-black text-indigo-600 uppercase tracking-widest flex items-center gap-2">
+                                                  <GraduationCap size={16} /> Formación
                                               </h3>
                                           </div>
-                                          <div className="flex flex-wrap gap-2.5">
+                                          <div className="flex flex-wrap gap-3">
                                               {candidate.courses.map((course: string, i: number) => (
-                                                  <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 text-[11px] font-bold rounded border border-slate-100">
+                                                  <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 text-[12px] font-bold rounded border border-slate-100">
                                                       {course}
                                                   </span>
                                               ))}
@@ -241,38 +235,38 @@ export const ReportView: React.FC<ReportViewProps> = ({ slides }) => {
                                       </section>
                                   )}
                                   
-                                  <div className="grid grid-cols-1 gap-4">
-                                      <div className="p-5 bg-indigo-50/50 rounded-[2rem] border border-indigo-100/50">
-                                          <span className="text-[11px] font-black text-indigo-600 uppercase tracking-widest block mb-2 flex items-center gap-2.5">
-                                              <UserCheck size={13} /> Fortalezas
+                                  <div className="grid grid-cols-1 gap-5">
+                                      <div className="p-6 bg-indigo-50/50 rounded-[2.5rem] border border-indigo-100/50">
+                                          <span className="text-[12px] font-black text-indigo-600 uppercase tracking-widest block mb-2.5 flex items-center gap-3">
+                                              <UserCheck size={14} /> Fortalezas
                                           </span>
-                                          <p className="text-[13px] font-bold text-indigo-900 leading-relaxed">{candidate.notable}</p>
+                                          <p className="text-[14px] font-bold text-indigo-900 leading-relaxed">{candidate.notable}</p>
                                       </div>
-                                      <div className="p-5 bg-rose-50/50 rounded-[2rem] border border-rose-100/50">
-                                          <span className="text-[11px] font-black text-rose-600 uppercase tracking-widest block mb-2 flex items-center gap-2.5">
-                                              <TrendingUp size={13} /> Desarrollo
+                                      <div className="p-6 bg-rose-50/50 rounded-[2.5rem] border border-rose-100/50">
+                                          <span className="text-[12px] font-black text-rose-600 uppercase tracking-widest block mb-2.5 flex items-center gap-3">
+                                              <TrendingUp size={14} /> Desarrollo
                                           </span>
-                                          <p className="text-[13px] font-bold text-rose-900 leading-relaxed">{candidate.toConsider}</p>
+                                          <p className="text-[14px] font-bold text-rose-900 leading-relaxed">{candidate.toConsider}</p>
                                       </div>
                                   </div>
                               </div>
 
                               {/* EVALUATOR PANEL */}
-                              <div className="mt-auto pt-4 border-t border-slate-100">
-                                  <div className="flex items-center justify-between mb-3">
+                              <div className="mt-auto pt-6 border-t border-slate-100">
+                                  <div className="flex items-center justify-between mb-4">
                                       <div className="flex items-center gap-2">
-                                          <TrendingUp size={12} className="text-indigo-600" />
-                                          <span className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Observaciones</span>
+                                          <TrendingUp size={14} className="text-indigo-600" />
+                                          <span className="text-[12px] font-black text-slate-900 uppercase tracking-widest">Observaciones</span>
                                       </div>
-                                      <div className="flex gap-1">
+                                      <div className="flex gap-1.5">
                                           {[1,2,3,4,5].map(i => (
-                                              <Star key={i} size={12} className="text-slate-200" />
+                                              <Star key={i} size={14} className="text-slate-200" />
                                           ))}
                                       </div>
                                   </div>
                                   
-                                  <div className="h-32 w-full bg-slate-50/50 rounded-xl border border-slate-100 p-3 relative overflow-hidden">
-                                      <div className="space-y-4">
+                                  <div className="h-40 w-full bg-slate-50/50 rounded-2xl border border-slate-100 p-4 relative overflow-hidden">
+                                      <div className="space-y-5">
                                           {[1,2,3,4].map(i => (
                                               <div key={i} className="border-b border-slate-200/40 h-px w-full" />
                                           ))}
@@ -289,33 +283,33 @@ export const ReportView: React.FC<ReportViewProps> = ({ slides }) => {
       ))}
 
       {/* FINAL PAGE: CIERRE + NOTAS + VOTACIÓN */}
-      <div className="w-[210mm] h-[297mm] mx-auto p-[1.5cm] relative flex flex-col bg-white shadow-2xl print:shadow-none">
+      <div className="w-[210mm] h-[297mm] mx-auto p-[2cm] relative flex flex-col bg-white shadow-2xl print:shadow-none overflow-hidden">
           <Header sectionTitle="CONCLUSIÓN Y DECISIÓN FINAL" />
           
-          <div className="flex-1 space-y-8">
+          <div className="flex-1 space-y-10">
               {/* Cierre Block */}
-              <div className="flex items-center gap-16 bg-slate-50 p-16 rounded-[5rem] border border-slate-100">
-                  <div className="w-32 h-32 bg-indigo-600 rounded-[2.5rem] flex items-center justify-center text-white text-7xl shadow-lg shrink-0">🚀</div>
+              <div className="flex items-center gap-12 bg-slate-50 p-12 rounded-[3.5rem] border border-slate-100">
+                  <div className="w-28 h-28 bg-indigo-600 rounded-[2rem] flex items-center justify-center text-white text-6xl shadow-lg shrink-0">🚀</div>
                   <div>
-                      <h2 className="text-6xl font-black text-slate-900 uppercase tracking-tighter mb-5">{closing.title}</h2>
-                      <p className="text-2xl text-indigo-600 font-black uppercase tracking-widest mb-8">{closing.subtitle}</p>
-                      <p className="text-3xl font-bold text-slate-600 italic leading-tight">"{closing.content.description}"</p>
+                      <h2 className="text-5xl font-black text-slate-900 uppercase tracking-tighter mb-4">{closing.title}</h2>
+                      <p className="text-xl text-indigo-600 font-black uppercase tracking-widest mb-6">{closing.subtitle}</p>
+                      <p className="text-2xl font-bold text-slate-600 italic leading-tight">"{closing.content.description}"</p>
                   </div>
               </div>
 
               {/* Notas Block */}
               <section className="flex-1">
-                  <div className="flex items-center gap-6 mb-8">
-                      <TrendingUp size={28} className="text-slate-900" />
+                  <div className="flex items-center gap-5 mb-6">
+                      <TrendingUp size={24} className="text-slate-900" />
                       <h4 className="text-lg font-black text-slate-900 uppercase tracking-widest">Observaciones Consolidadas y Ranking de Selección</h4>
                   </div>
-                  <div className="h-[400px] w-full bg-slate-50/30 border-2 border-dashed border-slate-200 rounded-[4rem] p-16 relative overflow-hidden">
-                      <div className="space-y-16">
-                          {[1,2,3,4,5,6,7,8].map(i => (
+                  <div className="h-[380px] w-full bg-slate-50/30 border-2 border-dashed border-slate-200 rounded-[3rem] p-12 relative overflow-hidden">
+                      <div className="space-y-12">
+                          {[1,2,3,4,5,6,7].map(i => (
                               <div key={i} className="border-b border-slate-200/60 h-px w-full" />
                           ))}
                       </div>
-                      <div className="absolute bottom-12 right-16 text-[14px] font-black text-slate-300 uppercase tracking-[0.3em]">Espacio para síntesis final de la mesa directiva</div>
+                      <div className="absolute bottom-10 right-14 text-[14px] font-black text-slate-300 uppercase tracking-[0.3em]">Espacio para síntesis final de la mesa directiva</div>
                   </div>
               </section>
 
